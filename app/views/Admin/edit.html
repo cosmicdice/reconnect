@@ -1,0 +1,84 @@
+#{extends 'app.html' /}
+#{set title:'Admin' /}
+
+<div class="row">
+  <div class="span12">
+    <h2>Editer le profil de ${user.name}</h2>
+	  #{form @Admin.edit(user.id), class:'form-horizontal well edit-profile'}
+	    <div class="control-group">
+  	    <label class="control-label" for="name">Nom</label>
+  	    <div class="controls">
+          <input id="name" name="name" type="text" value="${user.name}" placeholder="Nom" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="username">Nom d'utilisateur</label>
+  	    <div class="controls">
+          <input id="username" name="username" type="text" value="${user.username}" placeholder="Nom d'utilisateur" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="email">Email</label>
+  	    <div class="controls">
+          <input id="email" name="email" type="text" value="${user.email}" placeholder="Email" />
+  	    </div>
+    	</div>
+  	  <div class="control-group">
+  	    <label class="control-label" for="gender">Sexe</label>
+  	    <div class="controls">
+          <input id="gender" name="gender" type="text" value="${user.gender}" placeholder="Sexe" />
+  	    </div>
+    	</div>
+  	  <div class="control-group">
+  	    <label class="control-label">Date de naissance</label>
+  	    <div class="controls">
+          <input id="day" name="day" type="text" value="${user.dateOfBirth.getDate()}" maxlength="2" placeholder="DD" />
+          <input id="month" name="month" type="text" value="${user.dateOfBirth.getMonth()}" maxlength="2" placeholder="MM" />
+          <input id="year" name="year" type="text" value="${user.dateOfBirth.getYear()}" maxlength="4" placeholder="YYYY" />
+  	    </div>
+  	  </div>
+  	  <div class="control-group">
+  	    <label class="control-label" for="city">Ville</label>
+  	    <div class="controls">
+          <input id="city" name="city" type="text" value="${user.city}" placeholder="Ville" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="cellphone">Téléphone mobile</label>
+  	    <div class="controls">
+          <input id="cellphone" name="cellphone" type="text" value="${user.cellphone}" placeholder="Téléphone mobile" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="phone">Téléphone fixe</label>
+  	    <div class="controls">
+          <input id="phone" name="phone" type="text" value="${user.phone}" placeholder="Téléphone fixe" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="departement">Service</label>
+  	    <div class="controls">
+          <input id="departement" name="departement" type="text" value="${user.departement}" placeholder="Service" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="workphone">Téléphone professionnel</label>
+  	    <div class="controls">
+          <input id="workphone" name="workphone" type="text" value="${user.workphone}" placeholder="Téléphone professionnel" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="isAdmin">Accès administrateur</label>
+  	    <div class="controls">
+          <select id="isAdmin" name="isAdmin">
+            <option value="No"#{if user.isAdmin == 0} selected="selected"#{/if}>Non</option>
+            <option value="Yes"#{if user.isAdmin == 1} selected="selected"#{/if}>Oui</option>
+          </select>
+  	    </div>
+    	</div>
+  	  <div class="form-actions">
+        <input type="submit" class="btn btn-primary" value="Update" id="update-profile" />
+      </div>
+    #{/form}
+  </div>
+</div>

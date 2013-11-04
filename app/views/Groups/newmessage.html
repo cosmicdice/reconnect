@@ -1,0 +1,27 @@
+#{extends 'app.html' /}
+#{set title:'Groupes' /}
+
+<div class="row">
+  <div class="span12">
+    <h2>Envoyer un message à ce groupe</h2>
+    #{form @Messages.newMessage(), class:'form-horizontal well newMessage-form'}
+        <div class="control-group">
+    	    <label class="control-label" for="subject">Sujet</label>
+    	    <div class="controls">
+            <input id="subject" name="subject" type="text" placeholder="Sujet" />
+    	    </div>
+        </div>
+        <div class="control-group">
+    	    <label class="control-label" for="content">Contenu</label>
+    	    <div class="controls">
+            <textarea id="content" name="content" type="text" placeholder="Contenu"></textarea>
+    	    </div>
+        </div>
+        <div class="form-actions">
+            <input type="hidden" id="type" name="type" value="2" />
+            <input type="hidden" id="idGroup" name="idGroup" value="${id}">
+            <input type="submit" class="btn btn-primary" value="Envoyer" id="create-message" />
+        </div>
+    #{/form}
+  </div>
+</div>

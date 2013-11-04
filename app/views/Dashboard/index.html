@@ -1,0 +1,61 @@
+#{extends 'dshbrd.html' /}
+#{set title:'Dashboard' /}
+
+<div class="row-fluid">
+  <div class="span3">
+    <h4>Flux</h4>
+    <div class="pddng">
+        <ul>
+        #{list items:statuses, as:'status'}
+            <li>
+                ${status.content} - from 
+                #{list items:listOfUsers, as:'u'}
+                    #{if u.id == status.owner}
+                        <a href="@{Users.show(u.username)}">${u.username}</a>
+                    #{/if}
+                  #{/list}
+            </li>
+        #{/list}
+        </ul>
+    </div>
+  </div>
+  <div class="span3">
+    <h4>A faire (${nbTasks})</h4>
+    <div class="pddng">
+        <ul>
+        #{list items:tasks, as:'task'}
+            <li>${task.content} - <a href="@{Tasks.done(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-ok"></i> Marquer effectué</a></li>
+        #{/list}
+        </ul>
+    </div>
+  </div>
+  <div class="span3">
+    <h4>Inbox (${nbInbox})</h4>
+    <div class="pddng">
+        <ul>
+        #{list items:inbox, as:'message'}
+            <li>
+                <a href="@{Messages.show(message.id)}">${message.subject}</a> - from 
+                #{list items:listOfUsers, as:'u'}
+                    #{if u.id == message.sender}
+                        <a href="@{Users.show(u.username)}">${u.username}</a>
+                    #{/if}
+                  #{/list}
+            </li>
+        #{/list}
+        </ul>
+    </div>
+  </div>
+  <div class="span3">
+    <h4>Mes Groupes</h4>
+    <div class="pddng">
+        <ul>
+        #{list items:groups, as:'group'}
+            <li>
+                <a href="@{Groups.show(group.id)}">${group.name}</a>
+            </li>
+        #{/list}
+        </ul>
+    </div>
+  </div>
+</div>

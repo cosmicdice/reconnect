@@ -1,0 +1,18 @@
+#{extends 'app.html' /}
+#{set title:'Rechercher une personne' /}
+
+<div class="row">
+  <div class="span16">
+	  <h2>Personnes trouvées</h2>
+	    <ul>
+	        #{if usernames != null}
+	            #{list items:usernames, as:'contact'}
+	                <li><a href="@{Users.show(contact)}">${contact}</a> <a href="@{Users.contacts(contact)}" class="add-contact"><i class="icon-plus"></i></a></li>
+	            #{/list}
+	        #{/if}
+	        #{else}
+	            Aucun résultat !
+	        #{/else}
+      </ul>
+  </div>
+</div>

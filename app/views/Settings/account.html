@@ -1,0 +1,64 @@
+#{extends 'app.html' /}
+#{set title:'Préférences' /}
+#{set title_a:'Preferences' /}
+
+<div class="row">
+  <div class="span12">
+    <ul class="nav nav-tabs">
+      <li#{if title_a == 'Preferences'} class="active"#{/if}><a href="#account" data-toggle="tab"><i class="icon-cog"></i> Compte</a></li>
+      <li#{if title_a == 'Preferences des messages'} class="active"#{/if}><a href="#messages" data-toggle="tab"><i class="icon-inbox"></i> Messages</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane#{if title_a == 'Preferences'} active#{/if}" id="account">
+        #{form @Settings.account(), class:'form-horizontal well account-form'}
+          <div class="control-group">
+            <label class="control-label" for="username">Nom d'utilisateur</label>
+            <div class="controls">
+              <input id="username" name="username" type="text" value="${userConnected.username}" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="name">Nom</label>
+            <div class="controls">
+              <input id="name" name="name" type="text" value="${userConnected.name}" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="email">Email</label>
+            <div class="controls">
+              <input id="email" name="email" type="text" value="${userConnected.email}" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="currentPassword">Mot de passe actuel</label>
+            <div class="controls">
+              <input id="currentPassword" name="currentPassword" type="text" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="newPassword">Nouveau mot de passe</label>
+            <div class="controls">
+              <input id="newPassword" name="newPassword" type="text" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="reNewPassword">Encore une fois</label>
+            <div class="controls">
+              <input id="reNewPassword" name="reNewPassword" type="text" />
+            </div>
+          </div>
+          <div class="form-actions">
+            <input type="submit" class="btn btn-primary" value="Mettre à jour" />
+            <a href="@{Settings.account()}" class="btn">Annuler</a>
+          </div>
+        #{/form}
+      </div>
+      <div class="tab-pane#{if title_a == 'Preferences des messages'} active#{/if}" id="messages">
+        <p>Messages</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,53 @@
+#{extends 'authenticated.html' /}
+#{set title:'Edition Profil' /}
+
+<div class="row">
+  <div class="span16">
+    <h1>Edit your profile<small>Please fill up the form</small></h1>
+	  #{form @Application.editProfile(), class:'form-stacked'}
+  	  <fieldset>
+  	    <legend>Profile Informations</legend>
+  	     <div class="clearfix">
+    	    <label for="gender">Gender</label>
+    	    <div class="input">
+            <input id="gender" name="gender" type="text" value="${user.gender}">
+    	    </div>
+    	 </div>
+    	 <div class="clearfix">
+      	    <label for="date">Date of birth</label>
+      	    <div class="input">
+              <input id="date" name="date" type="text" value="${user.dateOfBirth}">
+      	    </div>
+      	 </div>
+     	 <div class="clearfix">
+     	    <label for="city">City</label>
+     	    <div class="input">
+             <input id="city" name="city" type="text" value="${user.city}">
+     	    </div>
+     	 </div>
+     	 <div class="clearfix">
+     	    <label for="cellphone">Cellphone</label>
+     	    <div class="input">
+             <input id="cellphone" name="cellphone" type="text" value="${user.cellphone}">
+     	    </div>
+     	 </div>
+     	 <div class="clearfix">
+     	    <label for="phone">Phone</label>
+     	    <div class="input">
+             <input id="phone" name="phone" type="text" value="${user.phone}">
+     	    </div>
+     	 </div>
+     	 <div class="clearfix">
+      	    <label for="workphone">Workphone</label>
+      	    <div class="input">
+              <input id="workphone" name="workphone" type="text" value="${user.workphone}">
+      	    </div>
+      	 </div>
+    	  <div class="actions">
+          <input type="submit" class="btn primary" value="Submit">
+          <button type="reset" class="btn">Cancel</button>
+        </div>
+      </fieldset>
+    #{/form}
+  </div>
+</div>

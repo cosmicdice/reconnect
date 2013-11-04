@@ -1,0 +1,35 @@
+#{extends 'app.html' /}
+#{set title:'Groupes' /}
+
+<div class="row">
+  <div class="span6 offset3 group-view">
+    <h1>${group.name}</h1>
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <td>ID</td>
+          <td>Description</td>
+        </tr>
+        <tr>
+          <td>${group.id}</td>
+          <td>${group.desc}</td>
+        </tr>
+      </tbody>
+    </table>  
+    <h2>Membres</h2>
+      <ul class="member-list">
+        #{list items:usernames, as:'member'}
+        <li>
+          <a href="@{Users.show(member)}">${member}</a> 
+          #{if group.owner.equals(userConnected.id) || userConnected.isAdmin == 1}
+            <a href="@{Groups.removeMember(member, group.id)}"><i class="icon-remove"></i></a>
+          #{/if}
+        </li>
+        #{/list}
+      </ul>
+    <div class="well">
+      <a href="@{Groups.join(group.id)}" class="btn btn-primary btn-large">Rejoindre</a>
+      <a href="@{Groups.newMessage(group.id)}" class="btn btn-large">Envoyer un message</a>
+    </div>
+  </div>
+</div>

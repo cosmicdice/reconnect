@@ -1,0 +1,63 @@
+#{extends 'app.html' /}
+#{set title:'Editez votre profil' /}
+
+<div class="row">
+  <div class="span12">
+    <h2>Editer mon profil <small>Remplissez les champs ci-dessous</small></h2>
+	  #{form @Users.edit(), enctype:'multipart/form-data', class:'form-horizontal well edit-profile'}
+  	  <div class="control-group">
+  	    <label class="control-label" for="gender">Sexe</label>
+  	    <div class="controls">
+          <input id="gender" name="gender" type="text" value="${userConnected.gender}" placeholder="Sexe" />
+  	    </div>
+    	</div>
+  	  <div class="control-group">
+  	    <label class="control-label">Date de naissance</label>
+  	    <div class="controls">
+          <input id="day" name="day" type="text" value="${userConnected.dateOfBirth.getDate()}" maxlength="2" placeholder="DD" />
+          <input id="month" name="month" type="text" value="${userConnected.dateOfBirth.getMonth()}" maxlength="2" placeholder="MM" />
+          <input id="year" name="year" type="text" value="${userConnected.dateOfBirth.getYear()}" maxlength="4" placeholder="YYYY" />
+  	    </div>
+  	  </div>
+  	  <div class="control-group">
+  	    <label class="control-label" for="city">Ville</label>
+  	    <div class="controls">
+          <input id="city" name="city" type="text" value="${userConnected.city}" placeholder="Ville" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="cellphone">Téléphone mobile</label>
+  	    <div class="controls">
+          <input id="cellphone" name="cellphone" type="text" value="${userConnected.cellphone}" placeholder="Téléphone mobile" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="phone">Téléphone fixe</label>
+  	    <div class="controls">
+          <input id="phone" name="phone" type="text" value="${userConnected.phone}" placeholder="Téléphone fixe" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="departement">Service</label>
+  	    <div class="controls">
+          <input id="departement" name="departement" type="text" value="${userConnected.departement}" placeholder="Service" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="workphone">Téléphone professionnel</label>
+  	    <div class="controls">
+          <input id="workphone" name="workphone" type="text" value="${userConnected.workphone}" placeholder="Téléphone professionnel" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="picture">Photo de profil</label>
+  	    <div class="controls">
+          <input type="file" name="picture"/>
+  	    </div>
+    	</div>
+  	  <div class="form-actions">
+        <input type="submit" class="btn btn-primary" value="Mettre à jour" id="update-profile" />
+      </div>
+    #{/form}
+  </div>
+</div>

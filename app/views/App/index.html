@@ -1,0 +1,27 @@
+#{extends 'app.html' /}
+#{set title:'Accueil' /}
+
+<div class="row">
+  <div class="span12 feed">
+    <h2>Mur</h2>
+    #{form @Wall.newStatus(), class:'post-wall-form'}
+      <textarea id="content" name="content" type="text" placeholder="Quoi de neuf?"></textarea>
+      <input type="submit" class="btn btn-primary" value="Poster" id="post-wall" />
+    #{/form}
+    #{list items:statuses, as:'status'}
+      <div class="post">
+        <div class="post-infos">
+        #{list items:listOfUsers, as:'u'}
+          #{if u.id == status.owner}
+            <a href="@{Users.show(u.username)}" class="post-user">${u.username}</a>
+          #{/if}
+        #{/list}
+          <span class="post-date">${status.date.getDate()}/${status.date.getMonth()}/${status.date.getYear()}</span>
+        </div>
+        <div class="post-content">
+          ${status.content}
+        </div>
+      </div>
+    #{/list}
+  </div>
+</div>

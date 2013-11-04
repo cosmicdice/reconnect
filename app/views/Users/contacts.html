@@ -1,0 +1,52 @@
+#{extends 'app.html' /}
+#{set title:'Contacts' /}
+
+<div class="row">
+  <div class="span12 contacts">
+    <ul class="nav nav-tabs">
+      <li><a href="#add" data-toggle="tab"><i class="icon-plus"></i> Ajouter un contact</a></li>
+      <li class="active"><a href="#contacts" data-toggle="tab"><i class="icon-user"></i> Contacts</a></li>
+      <li><a href="#search" data-toggle="tab"><i class="icon-search"></i> Rechercher une personne</a></li>
+      <li><a href="#requests" data-toggle="tab"><i class="icon-envelope"></i> #{if nbReqs > 0}<strong>#{/if}Requête${nbReqs.pluralize()} (${nbReqs})#{if nbReqs > 0}</strong>#{/if}</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane" id="add">
+        <h2>Ajouter un contact</h2>
+        #{form @Users.contacts(), class:'form-inline well addcontact-form'}
+          <input id="username" name="username" type="text" />
+          <input type="submit" class="btn btn-primary" value="Ajouter" />
+        #{/form}
+      </div>
+      <div class="tab-pane active" id="contacts">
+        <h2>Liste de contacts</h2>
+        <ul>
+          #{list items:usernames, as:'contact'}
+            <li><a href="@{Users.show(contact)}">${contact}</a> <a href="@{Users.deleteContact(contact)}" onclick="if (!window.confirm('Are you sure? This cannot be undone')) return false;"> <i class="icon-remove"></i></a></li>
+          #{/list}
+        </ul>
+      </div>
+      <div class="tab-pane" id="search">
+        <h2>Rechercher une personne par nom, nom d'utilisateur ou email</h2>
+        #{form @Users.search(), class:'form-inline well searchcontact-form'}
+          <input id="keyword" name="keyword" type="text" class="search-query" />
+          <input type="submit" class="btn btn-primary" value="Rechercher" />
+        #{/form}
+      </div>
+      <div class="tab-pane" id="requests">
+        #{if nbReqs > 0}
+        <h2>Requête${nbReqs.pluralize()}</h2>
+        #{/if}
+        #{else}
+        <h2>Aucune requête !</h2>
+        #{/else}
+        <ul>
+          #{list items:usernamesRequest, as:'contactRequest'}
+            <li>
+              <a href="@{Users.show(contactRequest)}">${contactRequest}</a> <a href="@{Users.acceptContact(contactRequest)}"><i class="icon-ok"></i></a> <a href="@{Users.rejectContact(contactRequest)}"><i class="icon-ban-circle"></i></a>
+            </li>
+          #{/list}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

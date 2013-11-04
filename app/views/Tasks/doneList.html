@@ -1,0 +1,37 @@
+#{extends 'app.html' /}
+#{set title:'Tâches' /}
+#{set title_a:'Taches' /}
+
+<div class="row">
+  <div class="span12">  
+      <ul class="tabs" data-tabs="tabs">
+      <li><a href="@{Tasks.index}">Liste de tâches</a></li>
+      <li class="active"><a href="@{Tasks.doneList}">Tâches effectuées</a></li>
+    </ul>
+    <div id="my-tab-content" class="tab-content">
+      <div class="tab-pane active" id="list">
+        <h2>Tâches effectuées</h2>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Niveau</th>
+                        <th>Contenu</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    #{list items:tasks, as:'task'}
+                    <tr>
+                        <td>${task.level}</td>
+                        <td>${task.content}</td>
+                        <td><a href="@{Tasks.delete(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;">Supprimer</a></td>
+                    </tr>
+                    #{/list}
+                </tbody>
+            </table>
+            <div class="well">
+                <a href="@{Tasks.newTask()}" class="btn btn-large">Nouvelle tâche</a>
+            </div>
+      </div>
+  </div>
+</div>

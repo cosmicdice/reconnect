@@ -1,0 +1,340 @@
+body {
+	padding-top: 60px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: 3.4em;
+  margin: 30px 0;
+}
+
+h2 {
+  font-size: 2.0em;
+  margin: 20px 0;
+}
+
+#about > h2, #contact > h2 {
+  margin-top: 40px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.navbar a {
+  color: #ccc;
+}
+
+.navbar a:hover {
+  color: #fff;
+}
+
+.navbar .pull-right {
+  margin: 6px 0 -3px;
+}
+
+.navbar .pull-right .btn {
+  margin-top: 0px;
+}
+
+.navbar .brand {
+	width: 170px;
+	height: 20px;
+	opacity: 1;
+	background: url('../images/connect2pro.png') no-repeat 15px center;
+}
+
+.navbar .brand:hover {
+	background-color: transparent;
+}
+
+.navbar .brand:active {
+	opacity: .8;
+}
+
+.navbar #logout {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.navbar #logout + p {
+  margin-top: 10px;
+  color: #777;
+}
+
+.hero-unit {
+  margin-top: 20px;
+}
+
+.hero-unit + .row {
+  margin-bottom: 20px;
+}
+
+small {
+	padding-left: 10px;
+}
+
+.form-horizontal {
+  margin: 0 auto;
+  width: 800px;
+  padding: 40px;
+}
+
+#account .form-actions input {
+  font-size: 1em;
+}
+
+.feed .post {
+  clear: both;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.feed .post-user {
+  font-weight: bold;
+}
+
+.feed .post-date {
+  font-size: 0.9em;
+  color: #aaa;
+  margin-left: 20px;
+}
+
+.feed .post-content {
+  width: auto;
+}
+
+.addcontact-form, .searchcontact-form, .addgroup-form, .new-message-form, .new-task-form {
+  margin: 0 auto 50px auto;
+  padding: 40px 50px;
+}
+
+.addcontact-form {
+  width: 300px;
+}
+
+.searchcontact-form {
+  width: 315px;
+}
+
+.addgroup-form {
+  width: 500px;
+}
+
+.new-message-form {
+  width: 500px;
+}
+
+.new-task-form {
+  width: 500px;
+}
+
+.contacts .search-query {
+  width: 190px;
+}
+
+.contacts .search-query + input {
+  width: 90px;
+}
+
+.groups #create-group {
+  width: 220px;
+}
+
+.new-message-form #create-message {
+  width: 220px;
+}
+
+.new-task-form #create-task {
+  width: 220px;
+}
+
+.new-message-form textarea {
+  width: 490px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.new-task-form textarea {
+  height: 100px;
+}
+
+.new-message-form .form-actions {
+  padding: 0;
+  text-align: center;
+}
+
+.contacts .btn {
+  width: 76px;
+}
+
+.contacts ul {
+  list-style-type: none;
+}
+
+.signup-form input[type="reset"] {
+  margin-top: -7px;
+}
+
+.signup-form, .edit-profile {
+  width: 500px;
+  padding: 40px 0;
+}
+
+.signup-form label, .edit-profile .control-group label {
+  width: 180px;
+  margin-right: 20px;
+}
+
+.account-form {
+  padding: 40px 50px;
+  width: 400px;
+}
+
+.form-actions {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.form-actions .btn:first-child {
+  margin-right: 16px;
+  margin-bottom: 7px;
+}
+
+.form-actions .btn {
+  margin: 0;
+  font-size: 1.2em;
+  padding: 10px;
+  width: 100px;
+}
+
+.form-actions a.btn {
+  width: 78px;
+}
+
+.control-group {
+  margin: 0 auto;
+}
+
+.profile-view div.pic {
+  width: 100px;
+  height: 100px;
+  margin: 20px 0 40px;
+  background-size: 100%;
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+.profile-view table tbody tr td:first-child {
+  width: 35%;
+}
+
+.profile-view table tbody tr td:last-child {
+  width: 65%;
+}
+
+.profile-view .well {
+  text-align: center;
+}
+
+input#day, input#month {
+  width: 45px;
+}
+
+input#year {
+  width: 92px;
+}
+
+input#update-profile {
+  margin-top: 15px;
+  margin-left: 40px;
+  width: 220px;
+}
+
+.group-view .member-list {
+  margin-bottom: 30px;
+}
+
+.group-view .well a:first-child {
+  width: 170px;
+  margin-right: 15px;
+}
+
+.group-view .well a:last-child {
+  width: 170px;
+  margin-right: 0;
+}
+
+.post-wall-form textarea {
+  width: 811px;
+  margin-right: 15px;
+}
+
+.post-wall-form #post-wall {
+  font-size: 1.5em;
+  width: 100px;
+  height: 46px;
+}
+
+.tasks table tr td:last-child {
+  width: 130px;
+}
+
+.groups table tr td:last-child {
+  width: 80px;
+}
+
+.wall table tr td:last-child {
+  width: 80px;
+}
+
+.admin table tr td:last-child {
+  width: 160px;
+}
+
+.dshbrd {
+  background: #eee;
+}
+
+.dshbrd .row-fluid {
+  margin: 0 0 30px;
+}
+
+.dshbrd .span3 {
+  background: #fff;
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+.dshbrd h4 {
+  border-bottom: 1px solid #eee;
+  padding: 15px;
+}
+
+.dshbrd .pddng {
+  padding: 15px;
+}
+
+
+footer {
+	min-width: 940px;
+	padding: 30px 0;
+	border-top: 1px solid #eee;
+	margin: 30px 0 0;
+}

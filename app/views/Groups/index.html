@@ -1,0 +1,49 @@
+#{extends 'app.html' /}
+#{set title:'Groupes' /}
+
+<div class="row">
+  <div class="span12 groups">
+    <ul class="nav nav-tabs">
+      <li><a href="#add" data-toggle="tab"><i class="icon-plus"></i> Ajouter un groupe</a></li>
+      <li class="active"><a href="#mygroups" data-toggle="tab"><i class="icon-book"></i> Mes groupes (${nbGrps})</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane" id="add">
+        <h2>Créer un groupe</h2>
+        #{form @Groups.add(), class:'form-horizontal well addgroup-form'}
+          <div class="control-group">
+      	    <label class="control-label" for="name">Nom</label>
+      	    <div class="controls">
+              <input id="name" name="name" type="text" placeholder="Nom" />
+      	    </div>
+          </div>
+          <div class="control-group">
+      	    <label class="control-label" for="desc">Description</label>
+      	    <div class="controls">
+              <input id="desc" name="desc" type="text" placeholder="Description" />
+      	    </div>
+          </div>
+          <div class="form-actions">
+              <input type="submit" class="btn btn-primary" value="Créer" id="create-group" />
+          </div>
+        #{/form}
+      </div>
+      <div class="tab-pane active" id="mygroups">
+        <h2>Mes groupes</h2>
+        <ul>
+          #{list items:listOfMyGroups, as:'group'}
+            <li><a href="@{Groups.show(group.id)}">${group.name}</a></li>
+          #{/list}
+        </ul>
+      </div>
+      <div class="tab-pane active" id="allgroups">
+          <h2>Tous les groupes</h2>
+          <ul>
+            #{list items:groups, as:'group'}
+              <li><a href="@{Groups.show(group.id)}">${group.name}</a></li>
+            #{/list}
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>

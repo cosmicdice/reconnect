@@ -1,0 +1,20 @@
+#{extends 'authenticated.html' /}
+#{set title:'Profil' /}
+
+<div class="row">
+  <div class="p16">
+    <h1>Your profile <small>Please fill up the form</small></h1>
+  	    <h2>Profile Informations</h2>
+  	     <div class="clearfix">
+  	         <p>Name : ${user.name}</p>
+  	         <p>Email : ${user.email}</p>
+    	     <p>Gender : ${user.gender}</p>
+    	     <p>Date of birth : ${user.dateOfBirth}</p>
+    	     <p>City : ${user.city}</p>
+    	     <p>Cellphone : ${user.cellphone}</p>
+    	     <p>Phone : ${user.phone}</p>
+    	     <p>Workphone : ${user.workphone}</p>
+    	     <a href="@{Application.editProfile}">Edit</a>
+         </div>
+  </div>
+</div>

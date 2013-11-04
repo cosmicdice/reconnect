@@ -1,0 +1,72 @@
+#{extends 'app.html' /}
+#{set title:'Messages' /}
+
+<div class="row">
+  <div class="span12 groups">
+    <ul class="nav nav-tabs">
+      <li><a href="@{Messages.newMessage}"><i class="icon-pencil"></i> Nouveau Message</a></li>
+      <li class="active"><a href="#inbox" data-toggle="tab"><i class="icon-inbox"></i> Inbox</a></li>
+      <li><a href="#outbox" data-toggle="tab"><i class="icon-share"></i> Outbox</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active" id="inbox">
+        <h2>Messages reçues</h2>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Expéditeur</th>
+              <th>Sujet</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            #{list items:inbox, as:'message'}
+            <tr>
+              <td>
+                  #{list items:inboxListOfUsers, as:'u'}
+                    #{if u.id == message.sender}
+                        <a href="@{Users.show(u.username)}">${u.username}</a>
+                    #{/if}
+                  #{/list}
+              </td>
+              <td><a href="@{Messages.show(message.id)}">${message.subject}</td>
+              <td>${message.date.getDay()}/${message.date.getMonth()}/${message.date.getYear()}</td>
+              <td><a href="@{Messages.delete(message.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a></td>
+            </tr>
+            #{/list}
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane" id="outbox">
+        <h2>Messages envoyés</h2>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Destinataire</th>
+              <th>Sujet</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            #{list items:outbox, as:'message'}
+            <tr>
+              <td>
+                  #{list items:outboxListOfUsers, as:'u'}
+                    #{if u.id == message.receiver}
+                        ${u.username}
+                    #{/if}
+                  #{/list}
+              </td>
+              <td><a href="@{Messages.show(message.id)}">${message.subject}</td>
+              <td>${message.date.getDay()}/${message.date.getMonth()}/${message.date.getYear()}</td>
+              <td><a href="@{Messages.delete(message.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a></td>
+            </tr>
+            #{/list}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
