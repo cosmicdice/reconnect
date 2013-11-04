@@ -1,0 +1,21 @@
+#{extends 'app.html' /}
+#{set title:'Settings' /}
+
+<div class="row">
+  <div class="span16">
+    <ul class="tabs" data-tabs="tabs">
+      <li class="active"><a href="@{Settings.account}">Profile</a></li>
+      <li><a href="#messages">Messages</a></li>
+    </ul>
+    <div id="my-tab-content" class="tab-content">
+      <div class="tab-pane active" id="profile">
+        <h2>Account</h2>
+      </div>
+      <div class="tab-pane" id="messages">
+        <p>messages</p>
+      </div>
+    </div>
+</div>
+
+
+

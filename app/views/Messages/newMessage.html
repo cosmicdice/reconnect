@@ -1,0 +1,29 @@
+#{extends 'app.html' /}
+#{set title:'Messages' /}
+
+<div class="row">
+  <div class="span12">
+    <h2>Envoyer un message</h2>
+    #{form @Messages.newMessage(), class:'form-horizontal well new-message-form'}
+        <div class="control-group">
+    	    <label class="control-label" for="username">Destinataire</label>
+    	    <div class="controls">
+            <input id="username" name="username" type="text" placeholder="Nom d'utilisateur" value="${username}" />
+    	    </div>
+        </div>
+        <div class="control-group">
+    	    <label class="control-label" for="subject">Sujet</label>
+    	    <div class="controls">
+            <input id="subject" name="subject" type="text" placeholder="Sujet" value ="${subject}" />
+    	    </div>
+        </div>
+        <div class="control-group">
+          <textarea id="content" name="content" type="text" placeholder="Message"></textarea>
+        </div>
+        <div class="form-actions">
+            <input type="hidden" id="type" name="type" value="1" />
+            <input type="submit" class="btn btn-primary" value="Envoyer" id="create-message" />
+        </div>
+    #{/form}
+  </div>
+</div>

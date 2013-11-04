@@ -1,0 +1,109 @@
+#{extends 'app.html' /}
+#{set title:'Profil' /}
+
+<div class="row">
+  <div class="span6 offset3 profile-view">
+    <h1 class="pull-left">Profil</h1>
+#{if user != null}
+    <div class="pic pull-right" style="background-image: url(${user.picture})">
+    </div>
+    <table class="table table-stripped table-bordered">
+      <tbody>
+        <tr>
+          <td>Nom</td>
+          <td>${user.name}</td>
+        </tr>
+        <tr>
+          <td>Nom d'utilisateur</td>
+          <td>${user.username}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>${user.email}</td>
+        </tr>
+        <tr>
+          <td>Sexe</td>
+          <td>${user.gender}</td>
+        </tr>
+        <tr>
+          <td>Date de naissance</td>
+          <td>${user.dateOfBirth.getDate()}/${user.dateOfBirth.getMonth()}/${user.dateOfBirth.getYear()}</td>
+        </tr>
+        <tr>
+          <td>Ville</td>
+          <td>${user.city}</td>
+        </tr>
+        <tr>
+          <td>Téléphone mobile</td>
+          <td>${user.cellphone}</td>
+        </tr>
+        <tr>
+          <td>Téléphone fixe</td>
+          <td>${user.phone}</td>
+        </tr>
+        <tr>
+          <td>Service</td>
+          <td>${user.departement}</td>
+        </tr>
+        <tr>
+          <td>Téléphone professionnel</td>
+          <td>${user.workphone}</td>
+        </tr>
+      </tbody>
+    </table>
+#{/if}
+#{else}
+    <div class="pic pull-right" style="background-image: url(${userConnected.picture})">
+    </div>
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>${userConnected.name}</td>
+        </tr>
+        <tr>
+          <td>Nom d'utilisateur</td>
+          <td>${userConnected.username}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>${userConnected.email}</td>
+        </tr>
+        <tr>
+          <td>Sexe</td>
+          <td>${userConnected.gender}</td>
+        </tr>
+        <tr>
+          <td>Date de naissance</td>
+          <td>${userConnected.dateOfBirth.getDate()}/${userConnected.dateOfBirth.getMonth()}/${userConnected.dateOfBirth.getYear()}</td>
+        </tr>
+        <tr>
+          <td>Ville</td>
+          <td>${userConnected.city}</td>
+        </tr>
+        <tr>
+          <td>Téléphone mobile</td>
+          <td>${userConnected.cellphone}</td>
+        </tr>
+        <tr>
+          <td>Téléphone fixe</td>
+          <td>${userConnected.phone}</td>
+        </tr>
+        <tr>
+          <td>Service</td>
+          <td>${userConnected.departement}</td>
+        </tr>
+        <tr>
+          <td>Téléphone professionnel</td>
+          <td>${userConnected.workphone}</td>
+        </tr>
+      </tbody>
+    </table>
+#{/else}
+#{if user.equals(userConnected) || user == null}
+    <div class="well">
+      <a href="@{Users.edit}" class="btn btn-large">Editer mon profil</a>
+    </div>
+#{/if}
+  </div>
+</div>

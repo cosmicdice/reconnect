@@ -1,0 +1,16 @@
+#{extends 'app.html' /}
+#{set title:'Messages' /}
+
+<div class="row">
+  <div class="span12 message">
+    <h2>Messages</h2>
+        <h3>Expéditeur : ${user.username}</h3>
+        <h4>Sujet : ${mail.subject}</h4>
+        <h4>Contenu</h4>
+        <div>${mail.content}</div>
+        ${mail.date.getDay()}/${mail.date.getMonth()}/${mail.date.getYear()}
+        <div class="well">
+            <a href="@{Messages.answer(user.username, mail.subject)}" class="btn btn-primary btn-large">Répondre</a>
+        </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+#{extends 'main.html' /}
+#{set title:'Inscription' /}
+
+<div class="row" id="signup">
+  <div class="span12">
+    <h2>Inscription <small>Remplissez les champs ci-dessous</small></h2>
+	  #{form @Users.signup(), class:'form-horizontal well signup-form'}
+	    #{if name != null && name.isEmpty()}
+  	  <div class="control-group error">
+  	  #{/if}
+  	  #{else}
+  	  <div class="control-group">
+  	  #{/else}
+  	    <label class="control-label" for="name">Nom</label>
+  	    <div class="controls">
+  	      #{if name != null && name.isEmpty()}
+          <input id="name" name="name" type="text" value="${name}" />
+          <p class="help-block">Le nom est vide</p>
+          #{/if}
+          #{else}
+          <input id="name" name="name" type="text" />
+          #{/else}
+  	    </div>
+    	</div>
+    	#{if email != null && email.isEmpty()}
+  	  <div class="control-group error">
+  	  #{/if}
+  	  #{else}
+  	  <div class="control-group">
+  	  #{/else}
+  	    <label class="control-label" for="email">Email</label>
+  	    <div class="controls">
+          #{if email != null && email.isEmpty()}
+          <input id="email" name="email" type="text" value="${email}" />
+          <p class="help-block">L'email est vide</p>
+          #{/if}
+          #{else}
+          <input id="email" name="email" type="text" />
+          #{/else}
+  	    </div>
+  	  </div>
+  	  <div class="control-group">
+  	    <label class="control-label" for="password">Mot de passe</label>
+  	    <div class="controls">
+          <input id="password" name="password" type="password" />
+  	    </div>
+  	  </div>
+  	  #{if username != null && username.isEmpty()}
+  	  <div class="control-group error">
+  	  #{/if}
+  	  #{else}
+  	  <div class="control-group">
+  	  #{/else}
+  	    <label class="control-label" for="username">Nom d'utilisateur</label>
+  	    <div class="controls">
+          #{if username != null && username.isEmpty()}
+          <input id="username" name="username" type="text" value="${username}" />
+          <p class="help-block">Le nom d'utilisateur est vide</p>
+          #{/if}
+          #{else}
+          <input id="email" name="username" type="text" />
+          #{/else}
+  	    </div>
+  	  </div>
+  	  <div class="form-actions">
+        <input type="submit" class="btn btn-primary" value="S'inscrire" />
+        <input type="reset" class="btn btn-large" value="Annuler" />
+      </div>
+    #{/form}
+  </div>
+</div>

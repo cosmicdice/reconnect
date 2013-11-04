@@ -1,0 +1,34 @@
+#{extends 'app.html' /}
+#{set title:'Messages' /}
+
+<div class="row">
+  <div class="span12 admin">
+    <h2>Messages</h2>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Expéditeur</th>
+          <th>Sujet</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        #{list items:mails, as:'message'}
+        <tr>
+          <td>
+              #{list items:listOfUsers, as:'u'}
+                #{if u.id == message.sender}
+                    ${u.username}
+                #{/if}
+              #{/list}
+          </td>
+          <td><a href="@{Messages.show(message.id)}">${message.subject}</a></td>
+          <td>${message.date.getDay()}/${message.date.getMonth()}/${message.date.getYear()}</td>
+          <td><a href="@{Messages.delete(message.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;">Delete</a></td>
+        </tr>
+        #{/list}
+      </tbody>
+    </table>
+  </div>
+</div>

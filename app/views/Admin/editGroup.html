@@ -1,0 +1,25 @@
+#{extends 'app.html' /}
+#{set title:'Admin' /}
+
+<div class="row">
+  <div class="span12">
+    <h2>Editer les informations du groupe ${group.name}</h2>
+	  #{form @Admin.editGroup(group.id), class:'form-horizontal well edit-profile'}
+	    <div class="control-group">
+  	    <label class="control-label" for="name">Nom</label>
+  	    <div class="controls">
+          <input id="name" name="name" type="text" value="${group.name}" placeholder="Nom" />
+  	    </div>
+    	</div>
+    	<div class="control-group">
+  	    <label class="control-label" for="desc">Description</label>
+  	    <div class="controls">
+          <input id="desc" name="desc" type="text" value="${group.desc}" placeholder="Description" />
+  	    </div>
+    	</div>
+  	  <div class="form-actions">
+        <input type="submit" class="btn btn-primary" value="Mettre à jour" id="update-profile" />
+      </div>
+    #{/form}
+  </div>
+</div>
