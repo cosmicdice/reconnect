@@ -52,10 +52,10 @@
               <li><a href="@{Users.contacts}">Contacts</a></li>
               #{/else}
               #{if title == 'Groupes'}
-              <li class="active"><a href="@{Groups.index}">Groupes</a></li>
+              <!--<li class="active"><a href="@{Groups.index}">Groupes</a></li>-->
               #{/if}
               #{else}
-              <li><a href="@{Groups.index}">Groupes</a></li>
+              <!--<li><a href="@{Groups.index}">Groupes</a></li>-->
               #{/else}
               #{if title == 'Messages'}
               <li class="active"><a href="@{Messages.index}">Messages</a></li>
@@ -70,10 +70,10 @@
               <li><a href="@{Tasks.index}">Tâches</a></li>
               #{/else}
               #{if title == 'Mur'}
-              <li class="active"><a href="@{Wall.index}">Mur</a></li>
+              <!--<li class="active"><a href="@{Wall.index}">Mur</a></li>-->
               #{/if}
               #{else}
-              <li><a href="@{Wall.index}">Mur</a></li>
+              <!--<li><a href="@{Wall.index}">Mur</a></li>-->
               #{/else}
               #{if userConnected.isAdmin == 1}
               #{if title == 'Admin'}
@@ -84,7 +84,7 @@
               #{/else}
               #{/if}
               <li class="divider-vertical"></li>
-              <li><a href="@{Dashboard.index}">Afficher le Dashboard</a></li>
+              <li><a href="@{Dashboard.index}">Dashboard</a></li>
             </ul>
           </div><!--/.nav-collapse -->
           <p class="pull-right" id="logout"><a href="@{Secure.logout}">Déconnexion</a></p>
@@ -101,7 +101,7 @@
     <footer>
       <div class="container">
         <p class="pull-right"><a href="#">Retour en haut</a></p>
-      	<p>&copy; Connect2Pro 2012</p>
+      	<p>&copy; S4S 2013</p>
 	    </div>
     </footer>
 

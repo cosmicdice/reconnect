@@ -116,7 +116,7 @@ public class Messages extends Controller {
         if (Security.isConnected()) {
                 Message message = Message.find("byId", id).first();
                 message.delete();
-                redirect("Messages.inbox");
+                redirect("Messages.index");
         } else {
             redirect("Home.index");
         }

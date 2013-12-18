@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>#{if title}#{get 'title' /} - #{/if}Connect2Pro</title>
+    <title>#{if title}#{get 'title' /} - #{/if}S4S</title>
     <meta charset="${_response_encoding}">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -34,13 +34,13 @@
           <div class="nav-collapse">
             <ul class="nav">
               #{if title == 'Accueil'}
-              <li class="active"><a href="#overview">Vue d'ensemble</a></li>
+              <li class="active"><a href="#overview">Overview</a></li>
               <li><a href="#about">A propos</a></li>
               <li><a href="#contact">Contact</a></li>
               <li><a href="@{Users.signup}">S'inscrire</a></li>
               #{/if}
               #{elseif title == 'Inscription'}
-              <li><a href="@{Home.index}#overview">Vue d'ensemble</a></li>
+              <li><a href="@{Home.index}#overview">Overview</a></li>
               <li><a href="@{Home.index}#about">A propos</a></li>
               <li><a href="@{Home.index}#contact">Contact</a></li>
               <li class="active"><a href="@{Users.signup}">S'inscrire</a></li>
@@ -51,7 +51,7 @@
   			  #{form @Secure.authenticate(), class:'pull-right'}
   		      <input class="input-small" type="text" placeholder="Nom d'utilisateur" name="username" id="username" />
   		      <input class="input-small" type="password" placeholder="Mot de passe" name="password" id="password" />
-  		      <input class="btn btn-primary" type="submit" value="Connexion" />
+  		      <input class="btn btn-orange" type="submit" value="Connexion" />
   		    #{/form}
   		    #{/if}
   		    #{else}
@@ -71,7 +71,7 @@
     <footer class="footer">
 			<div class="container">
         <p class="pull-right"><a href="#">Retour en haut</a></p>
-      	<p>&copy; Connect2Pro 2012</p>
+      	<p>&copy; S4S 2013</p>
 			</div>
     </footer>
 
