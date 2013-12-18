@@ -13,10 +13,6 @@ h2 {
   margin: 20px 0;
 }
 
-#about > h2, #contact > h2 {
-  margin-top: 40px;
-}
-
 ul {
   list-style-type: none;
 }
@@ -30,18 +26,29 @@ ul {
 }
 
 .navbar .pull-right {
-  margin: 6px 0 -3px;
+    height: 50px;
+    margin: 22px 0 -3px;
 }
 
 .navbar .pull-right .btn {
   margin-top: 0px;
 }
 
+.btn-orange{background-color:#e64d25;background-image:-moz-linear-gradient(top, #ed542C, #dc4322);background-image:-ms-linear-gradient(top, #ed542C, #dc4322);background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#ed542c), to(#dc4322));background-image:-webkit-linear-gradient(top, #ed542C, #dc4322);background-image:-o-linear-gradient(top, #ed542C, #dc4322);background-image:linear-gradient(top, #ed542C, #dc4322);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed542c', endColorstr='#dc4322', GradientType=0);border-color:#dc4322 #dc4322 #e64d25;border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);}.btn-orange:hover,.btn-orange:active,.btn-orange.active,.btn-orange.disabled,.btn-orange[disabled]{background-color:#dc4322;}
+.btn-orange:active,.btn-orange.active{background-color:#000000 \9;}
+
+.navbar .nav>li>a {
+    line-height: 50px;
+    width: 80px;
+    text-align: center;
+    color: #e5e5e5;
+}
+
 .navbar .brand {
-	width: 170px;
-	height: 20px;
+	width: 130px;
+	height: 50px;
 	opacity: 1;
-	background: url('../images/connect2pro.png') no-repeat 15px center;
+	background: url('../images/test.png') no-repeat 15px center;
 }
 
 .navbar .brand:hover {
@@ -63,7 +70,8 @@ ul {
 }
 
 .hero-unit {
-  margin-top: 20px;
+  margin-top: 50px;
+  background-color: #e5e5e5;
 }
 
 .hero-unit + .row {
@@ -78,10 +86,6 @@ small {
   margin: 0 auto;
   width: 800px;
   padding: 40px;
-}
-
-#account .form-actions input {
-  font-size: 1em;
 }
 
 .feed .post {
@@ -115,7 +119,7 @@ small {
 }
 
 .searchcontact-form {
-  width: 315px;
+  width: 300px;
 }
 
 .addgroup-form {
@@ -132,10 +136,6 @@ small {
 
 .contacts .search-query {
   width: 190px;
-}
-
-.contacts .search-query + input {
-  width: 90px;
 }
 
 .groups #create-group {
@@ -182,11 +182,6 @@ small {
   padding: 40px 0;
 }
 
-.signup-form label, .edit-profile .control-group label {
-  width: 180px;
-  margin-right: 20px;
-}
-
 .account-form {
   padding: 40px 50px;
   width: 400px;
@@ -218,28 +213,12 @@ small {
   margin: 0 auto;
 }
 
-.profile-view div.pic {
-  width: 100px;
-  height: 100px;
-  margin: 20px 0 40px;
-  background-size: 100%;
-  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-}
-
 .profile-view table tbody tr td:first-child {
-  width: 35%;
+  width: 30%;
 }
 
 .profile-view table tbody tr td:last-child {
-  width: 65%;
+  width: 70%;
 }
 
 .profile-view .well {
@@ -256,7 +235,6 @@ input#year {
 
 input#update-profile {
   margin-top: 15px;
-  margin-left: 40px;
   width: 220px;
 }
 
@@ -286,19 +264,19 @@ input#update-profile {
 }
 
 .tasks table tr td:last-child {
-  width: 130px;
+  width: 140px;
 }
 
 .groups table tr td:last-child {
-  width: 80px;
+  width: 70px;
 }
 
 .wall table tr td:last-child {
-  width: 80px;
+  width: 70px;
 }
 
 .admin table tr td:last-child {
-  width: 160px;
+  width: 150px;
 }
 
 .dshbrd {
@@ -309,7 +287,7 @@ input#update-profile {
   margin: 0 0 30px;
 }
 
-.dshbrd .span3 {
+.dshbrd .span4 {
   background: #fff;
   -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
@@ -334,7 +312,7 @@ input#update-profile {
 
 footer {
 	min-width: 940px;
-	padding: 30px 0;
+	padding: 20px 0;
 	border-top: 1px solid #eee;
-	margin: 30px 0 0;
+	margin: 20px 0 0;
 }
