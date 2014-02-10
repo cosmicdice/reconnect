@@ -35,12 +35,12 @@ public class Admin extends Controller {
         }
     }
     
-    public static void edit(long id, String name, String username, String email, String gender, Integer day, Integer month, Integer year, String city, String cellphone, String phone, String departement, String workphone, String isAdmin) {
+    public static void edit(long id, String name, String username, String email, String gender, Integer day, Integer month, Integer year, String city, String cellphone, String phone, String university, String workphone, String isAdmin) {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
             if (userConnected.isAdmin == 1) {
                 User user = User.find("byId", id).first();
-                if (name != null && username != null && email != null && gender != null && city != null && day != null && month != null && year != null && cellphone != null && phone != null && departement != null && workphone != null && isAdmin != null) {
+                if (name != null && username != null && email != null && gender != null && city != null && day != null && month != null && year != null && cellphone != null && phone != null && university != null && workphone != null && isAdmin != null) {
                     user.name = name;
                     user.username = username;
                     user.email = email;
@@ -51,7 +51,7 @@ public class Admin extends Controller {
                     user.city = city;
                     user.cellphone = cellphone;
                     user.phone = phone;
-					user.departement = departement;
+					user.university = university;
                     user.workphone = workphone;
                     user.isAdmin = (isAdmin.equals("Yes")) ? 1 : 0;
                     user.save();

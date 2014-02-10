@@ -13,7 +13,7 @@ import java.io.File;
 import models.*;
 
 public class Users extends Controller {
-    
+
     @Before
     static void setConnectedUser() {
         if (Security.isConnected()) {
@@ -24,26 +24,26 @@ public class Users extends Controller {
             renderArgs.put("user", null);
         }
     }
-    
+
     public static void index() {
         render();
     }
 
-    public static void signup(String email, String password, String name, String username) {
-        if(email!= null && validation.email(email).ok && password != null && name != null && username != null){
-            if (!email.isEmpty() && !password.isEmpty() && !name.isEmpty() && !username.isEmpty()){
-                User user = new User(email, Crypto.passwordHash(password), name, username);
+    public static void signup(String email, String password, String name, String username, String num_ine){
+        if(email!= null && validation.email(email).ok && password != null && name != null && username != null && num_ine != null){
+            if (!email.isEmpty() && !password.isEmpty() && !name.isEmpty() && !username.isEmpty() && !num_ine.isEmpty()){
+                User user = new User(email, Crypto.passwordHash(password), name, username, num_ine);
                 //user.isAdmin = 1;
                 user.save();
                 redirect("App.index");
             } else {
-                render(email, name, username);
+                render(email, name, username, num_ine);
             }
         } else {
             render();
         }
     }
-    
+
     public static void show(String username) {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
@@ -58,19 +58,20 @@ public class Users extends Controller {
             redirect("Home.index");
         }
     }
-    
-    public static void edit(String gender, Integer day, Integer month, Integer year, String city, String cellphone, String phone, String departement, String workphone, File picture) {
+
+    public static void edit(String gender, Integer day, Integer month, Integer year, String city, String cellphone, String phone, String workphone, File picture, String num_ine, String university) {
         if (Security.isConnected()) {
 			User userConnected = User.find("byUsername", Security.connected()).first();
-            if (gender != null && city != null && day != null && month != null && year != null && cellphone != null && phone != null && departement != null && workphone != null && (picture != null || userConnected.picture != null)) {
+            if (gender != null && city != null && day != null && month != null && year != null && cellphone != null && phone != null && workphone != null && (picture != null || userConnected.picture != null)) {
                 userConnected.gender = gender;
                 userConnected.dateOfBirth.setDate(day);
+                userConnected.university = university;
+                userConnected.num_ine = num_ine;
                 userConnected.dateOfBirth.setMonth(month);
                 userConnected.dateOfBirth.setYear(year);
                 userConnected.city = city;
                 userConnected.cellphone = cellphone;
                 userConnected.phone = phone;
-				userConnected.departement = departement;
                 userConnected.workphone = workphone;
 				if (picture != null) {
 					File newFile=Play.getFile("/public/upload/" + picture.getName());
@@ -88,7 +89,7 @@ public class Users extends Controller {
             redirect("Home.index");
         }
     }
-    
+
     public static void contacts(String username) {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
@@ -115,7 +116,7 @@ public class Users extends Controller {
                         userConnected.acceptContact(contact.id);
                         userConnected.save();
                     }
-                } 
+                }
             }
             ArrayList<String> usernames = new ArrayList<String>();
             ArrayList<String> usernamesRequest = new ArrayList<String>();
@@ -123,7 +124,7 @@ public class Users extends Controller {
             for (Long id : userConnected.contacts) {
                 user = User.find("byId", id).first();
                 usernames.add(user.username);
-            }    
+            }
             for (Long id : userConnected.contactsRequest) {
                     user = User.find("byId", id).first();
                     usernamesRequest.add(user.username);
@@ -147,8 +148,8 @@ public class Users extends Controller {
                         contact.deleteContactRequest(userConnected.id);
                     userConnected.save();
                     contact.save();
-                } 
-            }   
+                }
+            }
             redirect("Users.contacts");
         } else {
             redirect("Home.index");
@@ -165,8 +166,8 @@ public class Users extends Controller {
                         contact.deleteContact(userConnected.id);
                     userConnected.save();
                     contact.save();
-                } 
-            }   
+                }
+            }
             redirect("Users.contacts");
         } else {
             redirect("Home.index");
@@ -180,8 +181,8 @@ public class Users extends Controller {
                 if (contact != null){
                     userConnected.acceptContact(contact.id);
                     userConnected.save();
-                } 
-            }   
+                }
+            }
             redirect("Users.contacts");
         } else {
             redirect("Home.index");
@@ -198,7 +199,7 @@ public class Users extends Controller {
                     if (contact != null){
                         usernames.add(contact.username);
                         found = true;
-                    } 
+                    }
                     contact = null;
                     contact = User.find("byName", keyword).first();
                     if (contact != null){
