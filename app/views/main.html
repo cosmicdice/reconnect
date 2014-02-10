@@ -57,6 +57,7 @@
   		    #{else}
           <p class="pull-right" id="logout"><a href="@{Secure.logout}">Déconnexion</a></p>
           <p class="pull-right">Identifié en tant que <a href="@{Users.show}">${user.username}</a></p>
+          <p class="pull-right">${user.credits} Crédits</p>
   		    #{/else}
         </div>
       </div>
