@@ -16,6 +16,12 @@
         <h2>Créer une tâche</h2>
         #{form @Tasks.newTask(), class:'form-horizontal well new-task-form'}
         <div class="control-group">
+            <label class="control-label" for="title">Titre</label>
+            <div class="controls">
+              <input id="title" name="title" type="text" placeholder="Titre" />
+            </div>
+        </div>
+        <div class="control-group">
           <label class="control-label" for="level">Prix</label>
           <div class="controls">
                 <input id="level" name="level" type="number" value="1">
