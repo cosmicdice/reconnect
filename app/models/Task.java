@@ -45,12 +45,14 @@ public class Task extends Model {
 
 	@Lob
 	public String content;
+    public String title;
 
-	public Task(Long owner, Long level, String content) {
+	public Task(Long owner, Long level, String content, String title) {
 		this.owner = owner;
 		this.level = level;
 		this.done = false;
 		this.content = content;
+        this.title = title;
         this.participants = new ArrayList<Long>(600);
         this.tags = new ArrayList<String>(10);
 	}

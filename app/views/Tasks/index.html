@@ -72,7 +72,7 @@
             <tbody>
                 #{list items:tasks, as:'task'}
                 <tr>
-                    <td>title</td>
+                    <td>${task.title}</td>
                     <td>${task.level}</td>
                     <td>${task.content}</td>
                     <td>
@@ -100,7 +100,7 @@
             <tbody>
                 #{list items:tasksDone, as:'task'}
                 <tr>
-                    <td>title</td>
+                    <td>${task.title}</td>
                     <td>${task.level}</td>
                     <td>${task.content}</td>
                     <td><a href="@{Tasks.delete(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a></td>
@@ -126,7 +126,7 @@
                 <!-- Récupérer la liste des tâches non validées à la place -->
                 #{list items:tasksDone, as:'task'}
                 <tr>
-                    <td>title</td>
+                    <td>${task.title}</td>
                     <td>${task.level}</td>
                     <td>${task.content}</td>
                     <td><a href="@{Tasks.delete(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a></td>
