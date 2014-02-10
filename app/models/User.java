@@ -8,15 +8,15 @@ import java.util.*;
 
 @Entity
 public class User extends Model {
-	
+
 	//Champs relatifs au compte
 	public String email;
 	public String password;
 	public String name;
 	public String username;
 	public int isAdmin;
-	
-	//Champs relatifs au profil 
+
+	//Champs relatifs au profil
 	public String gender;
     public Date dateOfBirth;
     public String city;
@@ -24,12 +24,18 @@ public class User extends Model {
     public String phone;
     public String workphone;
 	public String departement;
+    public String postal;
 	public String picture;
+
+    public String university;
+    public Long rating;
+    public Long num_ine;
+    public int credits;
 
     //Liste des contacts
 	@Lob
     public ArrayList<Long> contacts = new ArrayList<Long>(600);
-	
+
 	public ArrayList<Long> getContacts(){
 		return contacts;
 	}
@@ -42,10 +48,10 @@ public class User extends Model {
 	public void deleteContact(Long id){
 	    this.contacts.remove(this.contacts.indexOf(id));
 	}
-	
+
 	@Lob
 	public ArrayList<Long> contactsRequest = new ArrayList<Long>(600);
-	
+
 	public ArrayList<Long> getContactsRequest(){
 		return contactsRequest;
 	}
@@ -58,12 +64,27 @@ public class User extends Model {
 	public void deleteContactRequest(Long id){
 	    this.contactsRequest.remove(this.contactsRequest.indexOf(id));
 	}
-	
+
 	public void acceptContact(Long id){
 	    this.addContact(id);
 	    this.deleteContactRequest(id);
 	}
-	
+
+    public void addCredits(int credits){
+        this.credits = this.credits + credits;
+    }
+
+    public void useCredits(int credits){
+        int new_credits = this.credits - credits;
+        if(new_credits < 0){
+            this.credits = 0;
+        }
+        else {
+        this.credits = new_credits;
+        }
+    }
+
+
 	public User(String email, String password, String name, String username) {
 		this.email = email;
 		this.password = password;
