@@ -1,6 +1,0 @@
-05 déc. 2011 12:30:35,564 INFO  ~ Starting /Users/benjaminmichoux/play/Connect2Pro
-05 déc. 2011 12:30:35,570 INFO  ~ Module crud is available (/Users/benjaminmichoux/play/modules/crud)
-05 déc. 2011 12:30:37,574 WARN  ~ You're running Play! in DEV mode
-05 déc. 2011 12:30:38,846 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
-05 déc. 2011 12:30:51,170 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0
-05 déc. 2011 12:30:52,708 INFO  ~ Application 'y' is now started !
