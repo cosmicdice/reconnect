@@ -1,5 +1,5 @@
 #{extends 'app.html' /}
-#{set title:'Tâches' /}
+#{set title:'Services' /}
 #{set title_a:'Taches' /}
 
 <div class="row">
@@ -8,12 +8,14 @@
       <li><a href="#newtask" data-toggle="tab"><i class="icon-pencil"></i> Nouveau service</a></li>
       <li class="active"><a href="#inbox" data-toggle="tab"><i class="icon-list-alt"></i> Services</a></li>
       <li><a href="#outbox" data-toggle="tab"><i class="icon-check"></i> Mes services</a></li>
+      #{if userConnected.isAdmin == 1}
       <li><a href="#moderation" data-toggle="tab"><i class="icon-check"></i> Modération</a></li>
+      #{/if}
     </ul>
     <div id="myTabContent" class="tab-content">
 
       <div class="tab-pane" id="newtask">
-        <h2>Créer une tâche</h2>
+        <h2>Créer un service</h2>
         #{form @Tasks.newTask(), class:'form-horizontal well new-task-form'}
         <div class="control-group">
             <label class="control-label" for="title">Titre</label>
@@ -91,6 +93,7 @@
         </table>
       </div>
 
+      #{if userConnected.isAdmin == 1}
       <div class="tab-pane" id="moderation">
         <h2>Moderation</h2>
         <table class="table table-striped table-bordered">
@@ -115,6 +118,7 @@
             </tbody>
         </table>
       </div>
+      #{/if}
 
     </div>
   </div>
