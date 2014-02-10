@@ -43,11 +43,17 @@ public class Tasks extends Controller {
         }
     }*/
     
-    public static void newTask(Long level, String content, String title) {
+    public static void newTask(Long level, String content, String title, String tags) {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
             if (level != null && content != null) {
-                Task task = new Task(userConnected.id, level, content, title);
+
+                //découpage des tags
+                if (tags == null) tags = "";
+                tags = tags.replace(" ", "");
+                ArrayList<String> tagsList = new ArrayList<String>(Arrays.asList(tags.split(",")));
+
+                Task task = new Task(userConnected.id, level, content, title, tagsList);
                 task.save();
                 redirect("Tasks.index");
             }

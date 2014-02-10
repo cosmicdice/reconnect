@@ -47,13 +47,13 @@ public class Task extends Model {
 	public String content;
     public String title;
 
-	public Task(Long owner, Long level, String content, String title) {
+	public Task(Long owner, Long level, String content, String title, ArrayList<String> tags) {
 		this.owner = owner;
 		this.level = level;
 		this.done = false;
 		this.content = content;
         this.title = title;
         this.participants = new ArrayList<Long>(600);
-        this.tags = new ArrayList<String>(10);
+        this.tags = tags;
 	}
 }
