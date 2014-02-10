@@ -10,7 +10,7 @@ import javax.persistence.*;
 import models.*;
 
 public class Tasks extends Controller {
-    
+
     @Before
     static void setConnectedUser() {
          if (Security.isConnected()) {
@@ -21,7 +21,7 @@ public class Tasks extends Controller {
              renderArgs.put("userConnected", null);
          }
      }
-    
+
     public static void index() {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
@@ -32,7 +32,7 @@ public class Tasks extends Controller {
             redirect("Home.index");
         }
     }
-    
+
     /*public static void doneList() {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
@@ -42,7 +42,7 @@ public class Tasks extends Controller {
             redirect("Home.index");
         }
     }*/
-    
+
     public static void newTask(Long level, String content) {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
@@ -57,7 +57,7 @@ public class Tasks extends Controller {
             redirect("Home.index");
         }
     }
-    
+
     public static void delete(long id) {
         if (Security.isConnected()) {
                 Task task = Task.find("byId", id).first();
@@ -67,7 +67,7 @@ public class Tasks extends Controller {
             redirect("Home.index");
         }
     }
-    
+
     public static void done(long id) {
         if (Security.isConnected()) {
                 Task task = Task.find("byId", id).first();

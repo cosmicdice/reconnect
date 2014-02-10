@@ -23,13 +23,12 @@ public class User extends Model {
     public String cellphone;
     public String phone;
     public String workphone;
-	public String departement;
     public String postal;
 	public String picture;
 
     public String university;
     public Long rating;
-    public Long num_ine;
+    public String num_ine;
     public int credits;
 
     //Liste des contacts
@@ -85,11 +84,12 @@ public class User extends Model {
     }
 
 
-	public User(String email, String password, String name, String username) {
+	public User(String email, String password, String name, String username, String num_ine) {
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.username = username;
+        this.num_ine = num_ine;
 		this.dateOfBirth = new Date();
 		this.contacts = new ArrayList<Long>(600);
 		this.contactsRequest = new ArrayList<Long>(600);
