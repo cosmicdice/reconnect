@@ -93,6 +93,18 @@ public class User extends Model {
 		this.dateOfBirth = new Date();
 		this.contacts = new ArrayList<Long>(600);
 		this.contactsRequest = new ArrayList<Long>(600);
+
+		this.gender = "male";
+    	this.dateOfBirth = new Date();
+    	this.city = "none";
+   		this.cellphone = "none";
+   		this.phone = "none";
+   		this.workphone = "none";
+   		this.postal = "none";
+   		this.picture = "none";
+   		this.university = "none";
+   		this.rating = new Long(0);
+    	this.credits = 10;
 	}
 
 	public static Object connect(String username, String password) {
