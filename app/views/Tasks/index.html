@@ -5,9 +5,9 @@
 <div class="row">
   <div class="span12 tasks">
     <ul class="nav nav-tabs">
-      <li><a href="#newtask" data-toggle="tab"><i class="icon-pencil"></i> Nouvelle tâche</a></li>
-      <li class="active"><a href="#inbox" data-toggle="tab"><i class="icon-list-alt"></i> Tâches à faire</a></li>
-      <li><a href="#outbox" data-toggle="tab"><i class="icon-check"></i> Tâches effectuées</a></li>
+      <li><a href="#newtask" data-toggle="tab"><i class="icon-pencil"></i> Nouveau service</a></li>
+      <li class="active"><a href="#inbox" data-toggle="tab"><i class="icon-list-alt"></i> Services</a></li>
+      <li><a href="#outbox" data-toggle="tab"><i class="icon-check"></i> Mes services</a></li>
       <li><a href="#moderation" data-toggle="tab"><i class="icon-check"></i> Modération</a></li>
     </ul>
     <div id="myTabContent" class="tab-content">
@@ -40,18 +40,20 @@
       </div>
 
       <div class="tab-pane active" id="inbox">
-        <h2>Tâches à faire</h2>
+        <h2>Services disponibles</h2>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Niveau</th>
-                    <th>Contenu</th>
+                    <th>Titre</th>
+                    <th>Prix</th>
+                    <th>Description</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 #{list items:tasks, as:'task'}
                 <tr>
+                    <td>title</td>
                     <td>${task.level}</td>
                     <td>${task.content}</td>
                     <td>
@@ -66,18 +68,20 @@
       </div>
 
       <div class="tab-pane" id="outbox">
-        <h2>Tâches effectuées</h2>
+        <h2>Mes services</h2>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Niveau</th>
-                    <th>Contenu</th>
+                    <th>Titre</th>
+                    <th>Prix</th>
+                    <th>Description</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 #{list items:tasksDone, as:'task'}
                 <tr>
+                    <td>title</td>
                     <td>${task.level}</td>
                     <td>${task.content}</td>
                     <td><a href="@{Tasks.delete(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a></td>
@@ -88,10 +92,11 @@
       </div>
 
       <div class="tab-pane" id="moderation">
-        <h2>Tâches effectuées</h2>
+        <h2>Moderation</h2>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
+                    <th>Titre</th>
                     <th>Niveau</th>
                     <th>Contenu</th>
                     <th>Action</th>
@@ -101,6 +106,7 @@
                 <!-- Récupérer la liste des tâches non validées à la place -->
                 #{list items:tasksDone, as:'task'}
                 <tr>
+                    <td>title</td>
                     <td>${task.level}</td>
                     <td>${task.content}</td>
                     <td><a href="@{Tasks.delete(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a></td>
