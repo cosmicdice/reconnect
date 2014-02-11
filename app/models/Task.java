@@ -80,7 +80,7 @@ public class Task extends Model {
 	public String content;
     public String title;
 
-	public Task(Long owner, int level, String content, String title, ArrayList<String> tags, int particpants_max) {
+	public Task(Long owner, int level, String content, String title, ArrayList<String> tags, int participants_max) {
 		this.owner = owner;
 		this.level = level;
 		this.done = false;

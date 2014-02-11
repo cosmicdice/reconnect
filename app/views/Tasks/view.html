@@ -32,7 +32,7 @@
                     #{/list}
                     </ul>
                 </p>
-                <p><i>Participants :</i> 
+                <p><i>${task.participants_max} Participants :</i> 
 		            <ul class="inline-list">
 		            #{list items:listParticipants, as:'participant'}
                          <li><a href="@{Users.show(participant)}">${participant}</a></li>
@@ -46,6 +46,12 @@
                     <input type="submit" class="btn btn-primary" value="S'inscrire au service" id="askService" />
                 #{/form}
             #{/if}
+            #{else}
+                #{form @Tasks.ownerDone()}
+                    <input type="hidden" id="id" name="id" value="${task.id}">
+                    <input type="submit" class="btn btn-primary" value="Service effectué" id="ServiceDone" />
+                #{/form}
+            #{/else}
 	    </div>
 
 
