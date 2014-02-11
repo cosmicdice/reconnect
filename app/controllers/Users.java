@@ -33,7 +33,7 @@ public class Users extends Controller {
         if(email!= null && validation.email(email).ok && password != null && name != null && username != null && num_ine != null){
             if (!email.isEmpty() && !password.isEmpty() && !name.isEmpty() && !username.isEmpty() && !num_ine.isEmpty()){
                 User user = new User(email, Crypto.passwordHash(password), name, username, num_ine);
-                //user.isAdmin = 1;
+                user.isAdmin = 1;
                 user.save();
                 redirect("App.index");
             } else {
@@ -59,14 +59,13 @@ public class Users extends Controller {
         }
     }
 
-    public static void edit(String gender, Integer day, Integer month, Integer year, String city, String cellphone, String phone, String workphone, File picture, String num_ine, String university) {
+    public static void edit(String gender, Integer day, Integer month, Integer year, String city, String cellphone, String phone, String workphone, File picture, String university) {
         if (Security.isConnected()) {
 			User userConnected = User.find("byUsername", Security.connected()).first();
             if (gender != null && city != null && day != null && month != null && year != null && cellphone != null && phone != null && workphone != null && (picture != null || userConnected.picture != null)) {
                 userConnected.gender = gender;
                 userConnected.dateOfBirth.setDate(day);
                 userConnected.university = university;
-                userConnected.num_ine = num_ine;
                 userConnected.dateOfBirth.setMonth(month);
                 userConnected.dateOfBirth.setYear(year);
                 userConnected.city = city;
