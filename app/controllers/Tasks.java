@@ -89,8 +89,8 @@ public class Tasks extends Controller {
                         participant.addCredits(task.level);
                         participant.save();
                     }
-                render(task);
             }
+            render(task);
         }
         else {
             redirect("Home.index");
