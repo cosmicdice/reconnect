@@ -100,11 +100,11 @@ public class Tasks extends Controller {
             List<String> listParticipants = new ArrayList<String>(600);
             for (int i = 0; i < task.participants.size(); i++){
                 User participant = User.find("byId", task.participants.get(i)).first();
-                String nameParticipant = participant.name;
+                String nameParticipant = participant.username;
                 listParticipants.add(nameParticipant);
             }
             User owner = User.find("byId", task.owner).first();
-            String owner_name = owner.name;
+            String owner_name = owner.username;
             render(task, listParticipants, owner_name);
         }
         else {
