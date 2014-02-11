@@ -25,6 +25,14 @@ div#spacer {
 	text-align: center;
 }
 
+.inline-list {
+    display: inline;
+}
+
+.inline-list li {
+    display: inline;
+}
+
 .navbar a {
   color: #ccc;
 }

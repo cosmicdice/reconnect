@@ -63,6 +63,13 @@ public class Tasks extends Controller {
             List<Task> myTasks = Task.find("select t from Task as t where t.owner=? order by t.level desc", userConnected.id).fetch();
             // Inscriptions
             List<Task> suscribedTasks = Task.find("select t from Task as t where t.owner=? order by t.level desc", userConnected.id).fetch();
+            Iterator<Task> i2 = suscribedTasks.iterator();
+            while (i2.hasNext()) {
+                Task task = i2.next();
+                if (!task.participants.contains(userConnected.id)) {
+                    i2.remove();
+                }
+            }
             // Tâches à modérer
             List<Task> tasksToModerate = Task.find("select t from Task as t where t.done=false order by t.level desc").fetch();
             if (tab == 0) tab = 2;

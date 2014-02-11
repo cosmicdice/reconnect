@@ -24,9 +24,18 @@
 		        <div class="well">
 		            <p>${task.content}</p>
 		        </div>
-		        <p>Proposé par : ${task.owner}</p>
+		        <p><i>Proposé par :</i> ${task.owner}</p>
+		        <p><i>Tags :</i> 
+		            <ul class="inline-list">
+		            #{list items:task.tags, as:'tag'}
+                        <li>${tag}</li>
+                    #{/list}
+                    </ul>
+                </p>
 		    </div>
-
+            #{if userConnected.id != task.owner}
+                <input type="button" class="btn btn-primary" value="S'inscrire au service" id="askService" />
+            #{/if}
 	    </div>
 
 
