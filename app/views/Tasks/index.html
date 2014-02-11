@@ -96,7 +96,7 @@
                 </tr>
             </thead>
             <tbody>
-                #{list items:myTasks, as:'task'}
+                #{list items:suscribedTasks, as:'task'}
                 <tr>
                     <td><a href="@{Tasks.view(task.id)}" > ${task.title} </a></td>
                     <td>${task.level}</td>

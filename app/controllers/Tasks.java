@@ -61,10 +61,12 @@ public class Tasks extends Controller {
 
             //Services de l'utilisateur en cours
             List<Task> myTasks = Task.find("select t from Task as t where t.owner=? order by t.level desc", userConnected.id).fetch();
+            // Inscriptions
+            List<Task> suscribedTasks = Task.find("select t from Task as t where t.owner=? order by t.level desc", userConnected.id).fetch();
             // Tâches à modérer
             List<Task> tasksToModerate = Task.find("select t from Task as t where t.done=false order by t.level desc").fetch();
             if (tab == 0) tab = 2;
-            render(userConnected, tasks, tasksToModerate, myTasks, tab);
+            render(userConnected, tasks, tasksToModerate, suscribedTasks, myTasks, tab);
         } else {
             redirect("Home.index");
         }
