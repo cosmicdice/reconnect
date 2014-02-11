@@ -90,7 +90,15 @@ public class Tasks extends Controller {
                         participant.save();
                     }
             }
-            render(task);
+            List<String> listParticipants = new ArrayList<String>(600);
+            for (int i = 0; i < task.participants.size(); i++){
+                User participant = User.find("byId", task.participants.get(i)).first();
+                String nameParticipant = participant.name;
+                listParticipants.add(nameParticipant);
+            }
+            User owner = User.find("byId", task.owner).first();
+            String owner_name = owner.name;
+            render(task, listParticipants, owner_name);
         }
         else {
             redirect("Home.index");
