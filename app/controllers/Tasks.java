@@ -21,16 +21,11 @@ public class Tasks extends Controller {
              renderArgs.put("userConnected", null);
          }
      }
-<<<<<<< HEAD
-    
-    public static void index(long tab, String search, String tags) {
-=======
 
-    public static void index(long tab) {
->>>>>>> dev
+    public static void index(long tab, String search, String tags) {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
-            
+
             // Liste des tâches validées
             List<Task> tasks = null;
             if (search != null) { // Recherche
@@ -40,7 +35,7 @@ public class Tasks extends Controller {
                 tags = tags.replace(" ", "");
                 ArrayList<String> tagsList = new ArrayList<String>(Arrays.asList(tags.split(",")));
                 tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
-                
+
                 Iterator<Task> i = tasks.iterator();
                 while (i.hasNext()) {
                     boolean keep = false;
@@ -62,13 +57,13 @@ public class Tasks extends Controller {
             else { // Liste normale
                 tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
             }
-            
+
             //Services de l'utilisateur en cours
             List<Task> myTasks = Task.find("select t from Task as t where t.owner=? order by t.level desc", userConnected.id).fetch();
-            
+
             // Tâches à modérer
             List<Task> tasksToModerate = Task.find("select t from Task as t where t.done=false order by t.level desc").fetch();
-            
+
             if (tab == 0) tab = 2;
             render(userConnected, tasks, tasksToModerate, myTasks, tab);
         } else {
