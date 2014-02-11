@@ -56,7 +56,7 @@ public class Tasks extends Controller {
 
             }
             else { // Liste normale
-                tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
+                tasks = Task.find("select t from Task as t where t.done=true and t.owner<>? order by t.level desc", userConnected.id).fetch();
             }
 
             //Services de l'utilisateur en cours
