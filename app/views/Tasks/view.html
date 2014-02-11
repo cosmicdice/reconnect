@@ -47,10 +47,12 @@
                 #{/form}
             #{/if}
             #{else}
+                #{if task.owner_done == false}
                 #{form @Tasks.ownerDone()}
                     <input type="hidden" id="id" name="id" value="${task.id}">
                     <input type="submit" class="btn btn-primary" value="Service effectué" id="ServiceDone" />
                 #{/form}
+                #{/if}
             #{/else}
 	    </div>
 
