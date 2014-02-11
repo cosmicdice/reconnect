@@ -167,7 +167,7 @@ public class Tasks extends Controller {
             User userConnected = User.find("byUsername", Security.connected()).first();
             Task task = Task.find("byId", id).first();
             if (task.participants.contains(userConnected.id)){
-                task.addParticipant(userConnected.id);
+                task.addParticipant_done(userConnected.id);
                 task.isFinished();
                 task.save();
             }
