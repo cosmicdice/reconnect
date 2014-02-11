@@ -27,10 +27,11 @@ public class Tasks extends Controller {
             User userConnected = User.find("byUsername", Security.connected()).first();
             // Liste des tâches validées
             List<Task> tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
-            //List<Task> tasks = Task.find("select t from Task as t where t.owner=? and t.done=true order by t.level desc", userConnected.id).fetch();
+            //Services de l'utilisateur en cours
+            List<Task> myTasks = Task.find("select t from Task as t where t.owner=? and t.done=true order by t.level desc", userConnected.id).fetch();
             // Tâches à modérer
             List<Task> tasksToModerate = Task.find("select t from Task as t where t.done=false order by t.level desc").fetch();
-            render(userConnected, tasks, tasksToModerate);
+            render(userConnected, tasks, tasksToModerate, myTasks);
         } else {
             redirect("Home.index");
         }
