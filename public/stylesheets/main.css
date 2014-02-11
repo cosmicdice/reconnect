@@ -21,6 +21,10 @@ div#spacer {
     height: 20px;
 }
 
+.align-center {
+	text-align: center;
+}
+
 .navbar a {
   color: #ccc;
 }
