@@ -103,8 +103,8 @@ public class Tasks extends Controller {
                 String nameParticipant = participant.username;
                 listParticipants.add(nameParticipant);
             }
-            boolean isMember = task.isMember(userConnected.id);
-            boolean isMemberDone = task.isMemberDone(userConnected.id);
+            int isMember = task.isMember(userConnected.id);
+            int isMemberDone = task.isMemberDone(userConnected.id);
             User owner = User.find("byId", task.owner).first();
             String owner_name = owner.username;
             render(task, listParticipants, owner_name, isMember, isMemberDone);

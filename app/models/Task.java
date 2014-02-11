@@ -67,19 +67,23 @@ public class Task extends Model {
             this.task_finished = true;
     }
 
-    public boolean isMember(Long id){
+    public int isMember(Long id){
         for (int i=0; i < this.participants.size(); i++){
-            if (id == this.participants.get(i))
-                return true;
+            Logger.info("" + i);
+            if (id == this.participants.get(i)){
+                return 1;
+            }
         }
-        return false;
+        return 0;
         }
-    public boolean isMemberDone(Long id){
+
+    public int isMemberDone(Long id){
         for (int i=0; i < this.participants_done.size(); i++){
-            if (id == this.participants_done.get(i))
-                return true;
+            if (id == this.participants_done.get(i)){
+                return 1;
+            }
         }
-        return false;
+        return 0;
         }
 
 	@Lob
