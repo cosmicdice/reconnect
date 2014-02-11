@@ -22,7 +22,7 @@ public class Tasks extends Controller {
          }
      }
     
-    public static void index(long tab, String search, String tags) {
+    public static void index(long tab, String search, String tags, int level) {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
             
@@ -34,7 +34,14 @@ public class Tasks extends Controller {
                 if (tags == null) tags = "";
                 tags = tags.replace(" ", "");
                 ArrayList<String> tagsList = new ArrayList<String>(Arrays.asList(tags.split(",")));
-                tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
+                
+                Logger.info("" + level);
+                if (level == 0) {
+                    tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
+                }
+                else {
+                    tasks = Task.find("select t from Task as t where t.level < ? and t.done=true order by t.level desc", level).fetch();
+                }
                 
                 Iterator<Task> i = tasks.iterator();
                 while (i.hasNext()) {
