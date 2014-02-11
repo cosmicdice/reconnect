@@ -53,6 +53,7 @@
         <!--Recherche-->
         #{form @Tasks.index(), class:'form-search'}
         <input id="tags" name="tags" type="text" placeholder="Tags séparés par des virgules" />
+        <input id="level" name="level" type = "number" placeholder="Prix maximum"/>
         <input type="hidden" name="search" value="true" />
         <button type="submit" class="btn">search</button>  
         #{/form}
