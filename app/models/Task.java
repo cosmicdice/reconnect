@@ -67,6 +67,15 @@ public class Task extends Model {
             this.task_finished = true;
     }
 
+    public boolean isMember(Long id){
+        for (int i=0; i < this.participants.size(); i++){
+            if (id == this.participants.get(i))
+                return true;
+        }
+        return false;
+        }
+
+
 	@Lob
 	public String content;
     public String title;
