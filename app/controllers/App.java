@@ -22,6 +22,7 @@ public class App extends Controller {
     
     public static void index() {
         if (Security.isConnected()) {
+            redirect("Tasks.index");
 			User userConnected = User.find("byUsername", Security.connected()).first();
 			List<Status> statuses = new ArrayList<Status>();
 			List<Status> listOfStatuses = Status.find("select s from Status as s order by s.id desc").fetch();
