@@ -33,7 +33,6 @@ public class Tasks extends Controller {
                 tags = tags.replace(" ", "");
                 ArrayList<String> tagsList = new ArrayList<String>(Arrays.asList(tags.split(",")));
 
-                Logger.info("" + level);
                 if (level == 0) {
                     tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
                 }
@@ -52,9 +51,6 @@ public class Tasks extends Controller {
                             keep = true;
                         }
                     }
-
-                    //
-
                     if (!keep) i.remove();
                 }
 
