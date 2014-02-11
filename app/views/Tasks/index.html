@@ -42,9 +42,6 @@
             </div>
         </div>
         <div class="form-actions">
-
-            <input type="hidden" name="search" value="true" />
-
             <input type="submit" class="btn btn-primary" value="Créer" id="create-task" />
         </div>
     #{/form}
@@ -53,10 +50,10 @@
       <div class="tab-pane #{if tab == 2} active #{/if}" id="inbox">
         <h2>Services disponibles</h2>
 
-        <!--R-->
+        <!--Recherche-->
         #{form @Tasks.index(), class:'form-search'}
         <input id="tags" name="tags" type="text" placeholder="Tags séparés par des virgules" />
-
+        <input type="hidden" name="search" value="true" />
         <button type="submit" class="btn">search</button>  
         #{/form}
 

@@ -22,15 +22,25 @@ public class Tasks extends Controller {
          }
      }
     
-    public static void index(long tab) {
+    public static void index(long tab, String search) {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
+            
             // Liste des tâches validées
-            List<Task> tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
+            List<Task> tasks = null;
+            if (search != null) { // Recherche
+                tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
+            }
+            else { // Liste normale
+                tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
+            }
+            
             //Services de l'utilisateur en cours
             List<Task> myTasks = Task.find("select t from Task as t where t.owner=? order by t.level desc", userConnected.id).fetch();
+            
             // Tâches à modérer
             List<Task> tasksToModerate = Task.find("select t from Task as t where t.done=false order by t.level desc").fetch();
+            
             if (tab == 0) tab = 2;
             render(userConnected, tasks, tasksToModerate, myTasks, tab);
         } else {
