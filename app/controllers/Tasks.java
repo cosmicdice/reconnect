@@ -32,7 +32,7 @@ public class Tasks extends Controller {
                 if (tags == null) tags = "";
                 tags = tags.replace(" ", "");
                 ArrayList<String> tagsList = new ArrayList<String>(Arrays.asList(tags.split(",")));
-                
+
                 Logger.info("" + level);
                 if (level == 0) {
                     tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
@@ -40,7 +40,7 @@ public class Tasks extends Controller {
                 else {
                     tasks = Task.find("select t from Task as t where t.level < ? and t.done=true order by t.level desc", level).fetch();
                 }
-                
+
                 Iterator<Task> i = tasks.iterator();
                 while (i.hasNext()) {
                     boolean keep = false;
@@ -62,7 +62,7 @@ public class Tasks extends Controller {
             else { // Liste normale
                 tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
             }
-            
+
             //Services de l'utilisateur en cours
             List<Task> myTasks = Task.find("select t from Task as t where t.owner=? order by t.level desc", userConnected.id).fetch();
             // Tâches à modérer
@@ -107,6 +107,21 @@ public class Tasks extends Controller {
             Task task = Task.find("byId", id).first();
             if (task.participants.size() < task.participants_max && task.participants.contains(userConnected.id) == false && task.closed == false){
                 task.addParticipant(userConnected.id);
+                task.save();
+            }
+            Tasks.view(id);
+        }
+        else {
+            redirect("Home.index");
+        }
+    }
+
+    public static void deleteParticipant(long id){
+        if (Security.isConnected()) {
+            User userConnected = User.find("byUsername", Security.connected()).first();
+            Task task = Task.find("byId", id).first();
+            if (task.participants.contains(userConnected.id) == true && task.closed == false){
+                task.deleteParticipant(userConnected.id);
                 task.save();
             }
             Tasks.view(id);
