@@ -28,7 +28,7 @@ public class Tasks extends Controller {
             // Liste des tâches validées
             List<Task> tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
             //Services de l'utilisateur en cours
-            List<Task> myTasks = Task.find("select t from Task as t where t.owner=? and t.done=true order by t.level desc", userConnected.id).fetch();
+            List<Task> myTasks = Task.find("select t from Task as t where t.owner=? order by t.level desc", userConnected.id).fetch();
             // Tâches à modérer
             List<Task> tasksToModerate = Task.find("select t from Task as t where t.done=false order by t.level desc").fetch();
             render(userConnected, tasks, tasksToModerate, myTasks);
@@ -37,15 +37,6 @@ public class Tasks extends Controller {
         }
     }
     
-    /*public static void doneList() {
-        if (Security.isConnected()) {
-            User userConnected = User.find("byUsername", Security.connected()).first();
-            List<Task> tasks = Task.find("select t from Task as t where t.owner=? and t.done=true order by t.level desc", userConnected.id).fetch();
-            render(userConnected, tasks);
-        } else {
-            redirect("Home.index");
-        }
-    }*/
     
     public static void newTask(Long level, String content, String title, String tags) {
         if (Security.isConnected()) {

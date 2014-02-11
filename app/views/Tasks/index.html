@@ -90,6 +90,7 @@
                     <th>Titre</th>
                     <th>Prix</th>
                     <th>Description</th>
+                    <th>Validé</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -99,6 +100,10 @@
                     <td>${task.title}</td>
                     <td>${task.level}</td>
                     <td>${task.content}</td>
+                    <td>
+                      #{if task.done} Oui #{/if}
+                      #{else} Non #{/else}
+                    </td>
                     <td><a href="@{Tasks.delete(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a></td>
                 </tr>
                 #{/list}
