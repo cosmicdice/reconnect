@@ -22,14 +22,32 @@ public class Tasks extends Controller {
          }
      }
     
-    public static void index(long tab, String search) {
+    public static void index(long tab, String search, String tags) {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
             
             // Liste des tâches validées
             List<Task> tasks = null;
             if (search != null) { // Recherche
+
+                //découpage des tags
+                if (tags == null) tags = "";
+                tags = tags.replace(" ", "");
+                ArrayList<String> tagsList = new ArrayList<String>(Arrays.asList(tags.split(",")));
                 tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
+                
+                Iterator<Task> i = tasks.iterator();
+                while (i.hasNext()) {
+                    boolean remove = false;
+                    Task task = i.next();
+                    for (String tag : tagsList) {
+                        if(!tag.isEmpty() && !task.tags.contains(tag)) {
+                            remove = true;
+                        }
+                    }
+                    if (remove) i.remove();
+                }
+
             }
             else { // Liste normale
                 tasks = Task.find("select t from Task as t where t.done=true order by t.level desc").fetch();
