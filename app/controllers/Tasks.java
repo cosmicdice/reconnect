@@ -80,8 +80,7 @@ public class Tasks extends Controller {
             if (task == null){
                 redirect("Tasks.index");
             }
-            else{
-                if (task.credited == false && task.task_finished){
+            if (task.credited == false && task.task_finished){
                     int total_credits = task.level * task.participants.size();
                     userConnected.addCredits(total_credits);
                     task.credited = true;
@@ -90,7 +89,6 @@ public class Tasks extends Controller {
                         participant.addCredits(task.level);
                         participant.save();
                     }
-                }
                 render(task);
             }
         }
