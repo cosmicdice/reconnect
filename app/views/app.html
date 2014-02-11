@@ -75,7 +75,7 @@
               #{else}
               <!--<li><a href="@{Wall.index}">Mur</a></li>-->
               #{/else}
-              #{if userConnected.isAdmin == 1}
+              #{if userConnected && userConnected.isAdmin == 1}
               #{if title == 'Admin'}
               <li class="active"><a href="@{Admin.index}">Admin</a></li>
               #{/if}
@@ -86,7 +86,9 @@
             </ul>
           </div><!--/.nav-collapse -->
           <p class="pull-right" id="logout"><a href="@{Secure.logout}">Déconnexion</a></p>
+          #{if userConnected}
           <p class="pull-right">${userConnected.credits} Crédits - Identifié en tant que <a href="@{Users.show}">${userConnected.username}</a></p>
+          #{/if}
         </div>
       </div>
     </div>

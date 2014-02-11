@@ -33,7 +33,9 @@ public class Users extends Controller {
         if(email!= null && validation.email(email).ok && password != null && name != null && username != null && num_ine != null){
             if (!email.isEmpty() && !password.isEmpty() && !name.isEmpty() && !username.isEmpty() && !num_ine.isEmpty()){
                 User user = new User(email, Crypto.passwordHash(password), name, username, num_ine);
-                user.isAdmin = 1;
+                if (User.findAll().size() == 0) {
+                    user.isAdmin = 1;
+                }
                 user.save();
                 redirect("App.index");
             } else {
