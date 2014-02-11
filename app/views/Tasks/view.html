@@ -41,10 +41,20 @@
                 </p>
 		    </div>
             #{if userConnected.id != task.owner}
-                #{form @Tasks.addAsParticipant()}
-                    <input type="hidden" id="id" name="id" value="${task.id}">
-                    <input type="submit" class="btn btn-primary" value="S'inscrire au service" id="askService" />
-                #{/form}
+                #{if isMember == false}
+                    #{form @Tasks.addAsParticipant()}
+                        <input type="hidden" id="id" name="id" value="${task.id}">
+                        <input type="submit" class="btn btn-primary" value="S'inscrire au service" id="askService" />
+                    #{/form}
+                #{/if}
+                #{else}
+                    #{if isMemberDone == false}
+                    #{form @Tasks.participantDone()}
+                        <input type="hidden" id="id" name="id" value="${task.id}">
+                        <input type="submit" class="btn btn-primary" value="Service effectué" id="ServiceDoneParticipant" />
+                    #{/form}
+                    #{/if}
+                #{/else}
             #{/if}
             #{else}
                 #{if task.owner_done == false}
