@@ -98,13 +98,31 @@ public class Tasks extends Controller {
                     }
             }
             List<String> listParticipants = new ArrayList<String>(600);
+            ArrayList<Long> TlistParticipants = new ArrayList<Long>(600);
             for (int i = 0; i < task.participants.size(); i++){
                 User participant = User.find("byId", task.participants.get(i)).first();
                 String nameParticipant = participant.username;
                 listParticipants.add(nameParticipant);
+                TlistParticipants.add(participant.id);
             }
-            int isMember = task.isMember(userConnected.id);
-            int isMemberDone = task.isMemberDone(userConnected.id);
+            int isMember = 0;
+            for (int i = 0; i < task.participants.size(); i++){
+                if (userConnected.id == TlistParticipants.get(i)){
+                    isMember = 1;
+                }
+            }
+            ArrayList<Long> QlistParticipants = new ArrayList<Long>(600);
+            for (int i = 0; i < task.participants_done.size(); i++){
+                User participant = User.find("byId", task.participants_done.get(i)).first();
+                QlistParticipants.add(participant.id);
+            }
+            int isMemberDone = 0;
+            for (int i = 0; i < task.participants_done.size(); i++){
+                if (userConnected.id == QlistParticipants.get(i)){
+                    isMemberDone = 1;
+                }
+            }
+
             User owner = User.find("byId", task.owner).first();
             String owner_name = owner.username;
             render(task, listParticipants, owner_name, isMember, isMemberDone);
