@@ -33,18 +33,6 @@
           <a class="brand" href="@{Home.index}"></a>
           <div class="nav-collapse">
             <ul class="nav">
-              #{if title == 'Accueil'}
-              <li class="active"><a href="@{Home.index}">Accueil</a></li>
-              #{/if}
-              #{else}
-              <li><a href="@{Home.index}">Accueil</a></li>
-              #{/else}
-              #{if title_a == 'Preferences'}
-              <li class="active"><a href="@{Settings.account}">Préférences</a></li>
-              #{/if}
-              #{else}
-              <li><a href="@{Settings.account}">Préférences</a></li>
-              #{/else}
               #{if title == 'Contacts'}
               <li class="active"><a href="@{Users.contacts}">Contacts</a></li>
               #{/if}
@@ -74,6 +62,12 @@
               #{/if}
               #{else}
               <!--<li><a href="@{Wall.index}">Mur</a></li>-->
+              #{/else}
+              #{if title_a == 'Preferences'}
+              <li class="active"><a href="@{Settings.account}">Préférences</a></li>
+              #{/if}
+              #{else}
+              <li><a href="@{Settings.account}">Préférences</a></li>
               #{/else}
               #{if userConnected && userConnected.isAdmin == 1}
               #{if title == 'Admin'}
