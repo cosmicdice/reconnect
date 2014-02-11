@@ -22,7 +22,7 @@ public class Tasks extends Controller {
          }
      }
     
-    public static void index() {
+    public static void index(long tab) {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
             // Liste des tâches validées
@@ -31,7 +31,8 @@ public class Tasks extends Controller {
             List<Task> myTasks = Task.find("select t from Task as t where t.owner=? order by t.level desc", userConnected.id).fetch();
             // Tâches à modérer
             List<Task> tasksToModerate = Task.find("select t from Task as t where t.done=false order by t.level desc").fetch();
-            render(userConnected, tasks, tasksToModerate, myTasks);
+            if (tab == 0) tab = 2;
+            render(userConnected, tasks, tasksToModerate, myTasks, tab);
         } else {
             redirect("Home.index");
         }
