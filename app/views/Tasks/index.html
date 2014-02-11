@@ -140,9 +140,9 @@
                     <td>
                       <a href="@{Tasks.view(task.id)}" > <i class="icon-eye-open"></i> Voir </a>
                       <br />
-                      <a href="@{Tasks.delete(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a>
+                      <a href="@{Tasks.done(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-ok"></i> Valider</a>
                       <br />
-                      <a href="@{Tasks.done(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-ok"></i> Marquer effectué</a>
+                      <a href="@{Tasks.delete(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a>
                     </td>
                 </tr>
                 #{/list}
