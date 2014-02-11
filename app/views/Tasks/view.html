@@ -24,8 +24,8 @@
 		        <div class="well">
 		            <p>${task.content}</p>
 		        </div>
-		        <p>Proposé par : ${task.owner}</p>
-		        <p>Tags : 
+		        <p><i>Proposé par :</i> ${task.owner}</p>
+		        <p><i>Tags :</i> 
 		            <ul class="inline-list">
 		            #{list items:task.tags, as:'tag'}
                         <li>${tag}</li>
