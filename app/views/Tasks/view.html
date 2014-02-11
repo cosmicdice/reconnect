@@ -9,9 +9,10 @@
   		<ul class="nav nav-tabs">
 		    <li><a href="@{Tasks.index()}?tab=1"><i class="icon-pencil"></i> Nouveau service</a></li>
 		    <li><a href="@{Tasks.index()}?tab=2"><i class="icon-list-alt"></i> Services</a></li>
-		    <li><a href="@{Tasks.index()}?tab=3"><i class="icon-list-alt"></i> Mes services</a></li>
+		    <li><a href="@{Tasks.index()}?tab=3"><i class="icon-list-alt"></i> Commandes</a></li>
+		    <li><a href="@{Tasks.index()}?tab=4"><i class="icon-list-alt"></i> Mes services</a></li>
 		    #{if userConnected.isAdmin == 1}
-		    <li><a href="@{Tasks.index()}?tab=4"><i class="icon-check"></i> Modération</a></li>
+		    <li><a href="@{Tasks.index()}?tab=5"><i class="icon-check"></i> Modération</a></li>
 		    #{/if}
 		    <li class="active"><a href="#viewtask" data-toggle="tab"><i class="icon-eye-open"></i> ${task.title}</a></li>
 	    </ul>
