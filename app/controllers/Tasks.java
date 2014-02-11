@@ -41,11 +41,15 @@ public class Tasks extends Controller {
                     boolean keep = false;
                     Task task = i.next();
 
+                    // tags
                     for (String tag : tagsList) {
                         if(tag.isEmpty() || task.tags.contains(tag)) {
                             keep = true;
                         }
                     }
+
+                    //
+
                     if (!keep) i.remove();
                 }
 
