@@ -41,7 +41,10 @@
                 </p>
 		    </div>
             #{if userConnected.id != task.owner}
-                <input type="button" class="btn btn-primary" value="S'inscrire au service" id="askService" />
+                #{form @Tasks.addAsParticipant()}
+                    <input type="hidden" id="id" name="id" value="${task.id}">
+                    <input type="submit" class="btn btn-primary" value="S'inscrire au service" id="askService" />
+                #{/form}
             #{/if}
 	    </div>
 
