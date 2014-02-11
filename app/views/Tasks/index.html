@@ -77,7 +77,7 @@
                     <td>${task.level}</td>
                     <td>${task.content}</td>
                     <td>
-
+                      <a href="@{Tasks.view(task.id)}" > <i class="icon-eye-open"></i> Voir </a>
                     </td>
                 </tr>
                 #{/list}
@@ -107,7 +107,11 @@
                       #{if task.done} Oui #{/if}
                       #{else} Non #{/else}
                     </td>
-                    <td><a href="@{Tasks.delete(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a></td>
+                    <td>
+                      <a href="@{Tasks.view(task.id)}" > <i class="icon-eye-open"></i> Voir </a>
+                      <br />
+                      <a href="@{Tasks.delete(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a>
+                    </td>
                 </tr>
                 #{/list}
             </tbody>
@@ -134,6 +138,8 @@
                     <td>${task.level}</td>
                     <td>${task.content}</td>
                     <td>
+                      <a href="@{Tasks.view(task.id)}" > <i class="icon-eye-open"></i> Voir </a>
+                      <br />
                       <a href="@{Tasks.delete(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-remove-sign"></i> Supprimer</a>
                       <br />
                       <a href="@{Tasks.done(task.id)}" onclick="if (!window.confirm('Etes-vous sûr ? Cette action est définitive.')) return false;"><i class="icon-ok"></i> Marquer effectué</a>

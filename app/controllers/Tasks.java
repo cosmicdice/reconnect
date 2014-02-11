@@ -41,9 +41,11 @@ public class Tasks extends Controller {
         if (Security.isConnected()) {
             User userConnected = User.find("byUsername", Security.connected()).first();
             Task task = Task.find("byId", id).first();
-
-            //Afficher une tâche
-            render(task);
+            
+            if (task == null)
+                redirect("Tasks.index");
+            else
+                render(task);
             
         } else {
             redirect("Home.index");
