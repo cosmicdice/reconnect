@@ -36,7 +36,19 @@ public class Tasks extends Controller {
             redirect("Home.index");
         }
     }
-    
+
+    public static void view(long id) {
+        if (Security.isConnected()) {
+            User userConnected = User.find("byUsername", Security.connected()).first();
+            Task task = Task.find("byId", id).first();
+
+            //Afficher une tâche
+            render(task);
+            
+        } else {
+            redirect("Home.index");
+        }
+    }
     
     public static void newTask(Long level, String content, String title, String tags) {
         if (Security.isConnected()) {

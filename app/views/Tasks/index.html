@@ -42,6 +42,9 @@
             </div>
         </div>
         <div class="form-actions">
+
+            <input type="hidden" name="search" value="true" />
+
             <input type="submit" class="btn btn-primary" value="Créer" id="create-task" />
         </div>
     #{/form}
@@ -70,7 +73,7 @@
             <tbody>
                 #{list items:tasks, as:'task'}
                 <tr>
-                    <td>${task.title}</td>
+                    <td><a href="@{Tasks.view(task.id)}" > ${task.title} </a></td>
                     <td>${task.level}</td>
                     <td>${task.content}</td>
                     <td>
@@ -97,7 +100,7 @@
             <tbody>
                 #{list items:myTasks, as:'task'}
                 <tr>
-                    <td>${task.title}</td>
+                    <td><a href="@{Tasks.view(task.id)}" > ${task.title} </a></td>
                     <td>${task.level}</td>
                     <td>${task.content}</td>
                     <td>
@@ -127,7 +130,7 @@
                 <!-- Récupérer la liste des tâches non validées à la place -->
                 #{list items:tasksToModerate, as:'task'}
                 <tr>
-                    <td>${task.title}</td>
+                    <td><a href="@{Tasks.view(task.id)}" > ${task.title} </a></td>
                     <td>${task.level}</td>
                     <td>${task.content}</td>
                     <td>
