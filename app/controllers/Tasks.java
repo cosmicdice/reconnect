@@ -38,14 +38,15 @@ public class Tasks extends Controller {
                 
                 Iterator<Task> i = tasks.iterator();
                 while (i.hasNext()) {
-                    boolean remove = false;
+                    boolean keep = false;
                     Task task = i.next();
+
                     for (String tag : tagsList) {
-                        if(!tag.isEmpty() && !task.tags.contains(tag)) {
-                            remove = true;
+                        if(tag.isEmpty() || task.tags.contains(tag)) {
+                            keep = true;
                         }
                     }
-                    if (remove) i.remove();
+                    if (!keep) i.remove();
                 }
 
             }
